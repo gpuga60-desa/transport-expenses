@@ -3,18 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Control de Gastos</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<h1>Control de Gastos Transporte</h1>
+<div class="header">
+Control de Gastos Transporte
+</div>
 
-<a href="nuevo-gasto.html">Nuevo gasto</a><br><br>
-<a href="dashboard.html">Ver gastos</a>
+<div class="container">
 
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+<div class="card">
+<h3>Menú</h3>
 
-<script src="js/firebase.js"></script>
+<a href="nuevo-gasto.html">
+<button class="button">➕ Nuevo gasto</button>
+</a>
+
+<br><br>
+
+<a href="dashboard.html">
+<button class="button">📊 Ver gastos</button>
+</a>
+
+</div>
+
+</div>
 
 </body>
 </html>
