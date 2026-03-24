@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Gastos</h2>
+
+<div id="lista"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+
+<script src="js/firebase.js"></script>
+
+<script>
+db.collection("gastos").orderBy("createdAt","desc")
+.get()
+.then(snapshot => {
+
+let total = 0;
+let html = "";
+
+snapshot.forEach(doc => {
+const g = doc.data();
+total += g.monto;
+
+html += `
+<div>
+${g.fecha} - ${g.tipo} - $${g.monto} 
+<br>
+${g.patente} - ${g.conductor}
+<hr>
+</div>
+`;
+});
+
+html += "<h3>Total: $" + total + "</h3>";
+
+document.getElementById("lista").innerHTML = html;
+
+});
+</script>
+
+</body>
+</html>
