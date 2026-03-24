@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Subir gasto</h2>
+
+<input type="file" id="file">
+<button onclick="subir()">Guardar</button>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+<script src="js/firebase.js"></script>
+
+<script>
+async function subir() {
+  const file = document.getElementById("file").files[0];
+
+  const ref = storage.ref().child("docs/" + file.name);
+  await ref.put(file);
+
+  const url = await ref.getDownloadURL();
+
+  await db.collection("gastos").add({
+    fecha: new Date().toISOString(),
+    monto: 0,
+    documento: url
+  });
+
+  alert("Guardado");
+}
+</script>
+
+</body>
+</html>
