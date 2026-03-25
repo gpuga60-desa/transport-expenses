@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
 <body>
 
-<h2>Gastos</h2>
+<div class="header">
+Gastos registrados
+</div>
 
+<div class="container">
+
+<div class="card">
 <div id="lista"></div>
+</div>
+
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-
 <script src="js/firebase.js"></script>
 
 <script>
@@ -24,16 +36,15 @@ const g = doc.data();
 total += g.monto;
 
 html += `
-<div>
-${g.fecha} - ${g.tipo} - $${g.monto} 
+<div class="gasto">
+<b>${g.tipo}</b> - $${g.monto}
 <br>
-${g.patente} - ${g.conductor}
-<hr>
+${g.fecha} | ${g.patente} | ${g.conductor}
 </div>
 `;
 });
 
-html += "<h3>Total: $" + total + "</h3>";
+html += `<div class="total">Total: $${total}</div>`;
 
 document.getElementById("lista").innerHTML = html;
 
